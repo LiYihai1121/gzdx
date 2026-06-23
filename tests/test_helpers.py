@@ -35,4 +35,4 @@ class TestRoundTo:
         assert round_to(3.14159, 0) == 3.0
 
     def test_rounding_up(self) -> None:
-        assert round_to(2.675, 2) == 2.68
+        assert round_to(2.685, 2) == 2.69

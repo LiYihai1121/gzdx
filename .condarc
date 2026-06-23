@@ -1,0 +1,5 @@
+channels:
+  - defaults
+  - conda-forge
+show_channel_urls: true
+auto_activate_base: false

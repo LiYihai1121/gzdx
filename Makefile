@@ -1,8 +1,13 @@
-.PHONY: install lint typecheck test coverage clean run ci
+﻿.PHONY: install lint typecheck test coverage clean run ci conda-setup
+
+conda-setup:
+	D:\anaconda3\Scripts\conda.exe env update -f environment.yml --prune
+	@echo Environment 'gzdx' ready. Run: conda activate gzdx
 
 install:
-	python -m venv .venv && .venv\Scripts\activate && pip install -e ".[dev]"
-	.venv\Scripts\pre-commit install 2>nul || true
+	D:\anaconda3\python.exe -m pip install -e ".[dev]"
+	D:\anaconda3\Scripts\conda.exe run -n gzdx pre-commit install 2>nul || true
+	@echo Run: conda activate gzdx
 
 lint:
 	ruff format --check .
@@ -28,6 +33,6 @@ clean:
 	@for /d /r . %%d in (__pycache__) do @if exist "%%d" rmdir /s /q "%%d"
 
 run:
-	python -m gzdx
+	D:\anaconda3\python.exe -m gzdx
 
 ci: lint typecheck coverage

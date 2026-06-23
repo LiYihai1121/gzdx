@@ -2,30 +2,37 @@
 
 projects learning
 
-## Getting Started
+## Quick Start (Conda)
 
 `ash
-# Create virtual environment & install
-make install
-# Activate
-.venv\Scripts\activate
-`
+# Create conda environment and install the project
+make conda-setup
 
-`ash
+# Activate environment
+conda activate gzdx
+
 # Run CLI
-gzdx hello
-gzdx hello gzdx
-gzdx info
-gzdx --help
-
-# Or via module
 python -m gzdx hello
+python -m gzdx hello gzdx
+python -m gzdx info
+python -m gzdx --help
 `
+
+Alternatively, use the gzdx command after activation:
+
+`ash
+gzdx hello
+`
+
+## Development
 
 `ash
 # Run tests
 make test
-# With coverage
+`
+
+`ash
+# Test with coverage
 make coverage
 `
 
@@ -34,7 +41,7 @@ make coverage
 make lint
 make typecheck
 
-# Full CI
+# Full CI suite
 make ci
 `
 
@@ -42,8 +49,8 @@ make ci
 
 | Command | Description |
 |---------|-------------|
-| make install | Create venv + install package + pre-commit hook |
-| make run | Run CLI via python -m gzdx |
+| make conda-setup | Create gzdx conda environment from environment.yml |
+| make install | Install/update project in the conda environment |
 | make test | Run pytest |
 | make coverage | Test with coverage report |
 | make lint | ruff check + format check |
@@ -70,6 +77,8 @@ make ci
 ├── docs/              # Documentation
 ├── .github/workflows/ # GitHub Actions CI
 ├── .pre-commit-config.yaml
+├── environment.yml    # Conda environment definition
+├── .condarc           # Conda channel config
 ├── Makefile
 ├── pyproject.toml
 ├── LICENSE            # Apache 2.0
