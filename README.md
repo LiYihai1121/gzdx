@@ -1,0 +1,2 @@
+# gzdx
+projects learing
