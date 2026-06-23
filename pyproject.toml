@@ -3,9 +3,9 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "new-project"
+name = "gzdx"
 version = "0.1.0"
-description = "A new Python project"
+description = "gzdx - Python project framework"
 requires-python = ">=3.10"
 dependencies = []
 
@@ -15,14 +15,15 @@ dev = [
     "pytest-cov>=4.0",
     "mypy>=1.0",
     "ruff>=0.4",
+    "pre-commit>=3.0",
 ]
 
 [project.scripts]
-new-project = "src.main:main"
+gzdx = "gzdx.cli.main:app"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["src*"]
+include = ["gzdx*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -38,3 +39,10 @@ select = ["E", "F", "I", "W"]
 [tool.mypy]
 python_version = "3.10"
 strict = true
+
+[tool.coverage.run]
+source = ["gzdx"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
